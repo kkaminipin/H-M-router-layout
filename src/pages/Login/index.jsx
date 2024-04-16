@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 
 import { useNavigate } from 'react-router-dom';
-// import Layout from '../../Layout';
 
 const Login = ({ setLoginStatus }) => {
   const navigate = useNavigate();
@@ -14,7 +13,6 @@ const Login = ({ setLoginStatus }) => {
   };
 
   return (
-    // <Layout>
     <div>
       <h1>로그인 페이지!!!</h1>
       <form onSubmit={loginCompletion}>
@@ -31,7 +29,6 @@ const Login = ({ setLoginStatus }) => {
         </div>
       </form>
     </div>
-    // </Layout>
   );
 };
 Login.propTypes = {

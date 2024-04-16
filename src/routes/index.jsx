@@ -1,6 +1,9 @@
 // import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root from '../pages/Root';
+
+import Layout from '../Layout';
+import Home from '../pages/Home';
+
 import Products from '../pages/Products';
 import ErrorPage from '../pages/ErrorPage';
 import ProductDetail from '../pages/ProductDetail';
@@ -13,18 +16,25 @@ const Routers = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: (
-        <Root loginStatus={loginStatus} setLoginStatus={setLoginStatus} />
-      ),
+      element: <Layout />,
       errorElement: <ErrorPage />,
-    },
-    {
-      path: '/products',
-      element: <Products />,
-    },
-    {
-      path: '/products/:id',
-      element: <ProductDetail loginStatus={loginStatus} />,
+      children: [
+        {
+          index: true,
+          path: '/',
+          element: (
+            <Home loginStatus={loginStatus} setLoginStatus={setLoginStatus} />
+          ),
+        },
+        {
+          path: '/products',
+          element: <Products />,
+        },
+        {
+          path: '/products/:id',
+          element: <ProductDetail loginStatus={loginStatus} />,
+        },
+      ],
     },
     {
       path: '/login',
